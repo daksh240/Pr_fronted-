@@ -21,10 +21,34 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
 });
-
 const User = mongoose.model("User", userSchema);
 
-app.get('/',(req,res)=>{
+const habitSchema = new mongoose.Schema({
+  name: String,
+  type: { type: String, enum: ['morning', 'noon', 'evening'] },
+  completed: { type: Boolean, default: false },
+  completionDate: Date,
+});
+
+const Habit = mongoose.model('Habit', habitSchema);
+
+const activitySchema = new mongoose.Schema({
+  name: String,
+  totalDays: Number,
+  completedDays: Number,
+  completionArray: [Boolean],
+});
+
+
+const Activity = mongoose.model('Activity', activitySchema);
+
+const videos = [
+  { id: 1, url: 'VIDEO1.mp4' },
+  { id: 2, url: 'VIDEO2.mp4' },
+  { id: 3, url: 'VIDEO3.mp4' },
+];
+
+app.get('/', (req, res) => {
   res.send("Server Working : ) ")
 })
 
@@ -73,26 +97,55 @@ app.get("/users", async (req, res) => {
   }
 });
 
-// 📌 UPDATE USER
-app.put("/users/:id", async (req, res) => {
-  try {
-    const { name, email } = req.body;
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, { name, email }, { new: true });
-    res.json(updatedUser);
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Server error" });
+let habits = [
+  { _id: '67e0c8e2d3a0c66505ab4c16', name: 'Drink Water', completed: false, type: 'morning' },
+  // Add more habits as needed
+];
+
+// Route to update a habit
+app.put('/habits/:id', (req, res) => {
+  const habitId = req.params.id;
+  const updatedData = req.body;
+
+  const habitIndex = habits.findIndex(habit => habit._id === habitId);
+  if (habitIndex === -1) {
+      return res.status(404).send('Habit not found');
   }
+
+  // Update the habit
+  habits[habitIndex] = { ...habits[habitIndex], ...updatedData };
+  res.status(200).json(habits[habitIndex]);
+});
+app.post('/habits', async (req, res) => {
+  const habit = new Habit(req.body);
+  await habit.save();
+  res.status(201).send(habit);
 });
 
-// 📌 DELETE USER
-app.delete("/users/:id", async (req, res) => {
-  try {
-    await User.findByIdAndDelete(req.params.id);
-    res.json({ success: true, message: "User deleted" });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Server error" });
-  }
+app.get('/habits', async (req, res) => {
+  const habits = await Habit.find();
+  res.send(habits);
 });
 
+// API Endpoints
+app.post('/activities', async (req, res) => {
+  const { name, totalDays, completedDays, completionArray } = req.body;
+  const newActivity = new Activity({ name, totalDays, completedDays, completionArray });
+  await newActivity.save();
+  res.status(201).json(newActivity);
+});
+
+app.get('/activities', async (req, res) => {
+  const activities = await Activity.find();
+  res.json(activities);
+});
+app.delete('/habits/:id', async (req, res) => {
+  await Habit.findByIdAndDelete(req.params.id);
+  res.status(204).send();
+});
+
+app.get('/videos', (req, res) => {
+  res.json(videos);
+});
 // Start the server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

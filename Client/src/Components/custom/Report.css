@@ -1,0 +1,95 @@
+.report-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin: 20px 0;
+}
+
+.tracker-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.habit-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.select {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reportbtn {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.habit-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.day {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day.completed {
+    background-color: #28a745;
+    color: white;
+}
+
+.habit-report {
+    margin-top: 20px;
+}
+
+.habit-report h2 {
+    margin-bottom: 10px;
+}
+
+.habit-report h3 {
+    margin-top: 15px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+    cursor: pointer; /* Indicate that the item is clickable */
+}
+
+.report-summary {
+    margin-bottom: 15px;
+}
+
+.progress {
+    margin-top: 10px;
+    font-weight: bold;
+}

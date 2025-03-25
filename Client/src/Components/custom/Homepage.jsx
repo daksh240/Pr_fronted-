@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
 import "./Homepage.css"; // Import the external CSS file
+import { Link } from "react-router-dom";
+
 
 function Homepage() {
   return (
@@ -15,8 +17,8 @@ function Homepage() {
           <div>
             <div className="btn">
               <a href="Day-Habit.html">
-                <button class="B1 slide-button">
-                  Lets Start Your Activity
+                <button class="B1 slide-button" >
+                  <Link to="/habit">Lets Start Your Activity</Link>
                 </button></a>
             </div>
           </div>
@@ -104,19 +106,64 @@ function Homepage() {
         </ul>
       </div>
 
-      <div className="container-2">
-        <div className="text-con">
-          Stay Empowered by <br /> Your Progress
+      <div>
+        <div className="container-3">
+          <div class="sub-container-3">
+            <img src="i1.jpg" class="im1" />
+            <img src="i2.jpg" class="im2" />
+          </div>
+          <div className="sub-container-3">
+            <img src="i3.jpg" class="im3" />
+            <img src="i4.jpg" class="im4" />
+          </div>
+
         </div>
-        <div className="text-con-1">
+      </div>
+      <div class="container-2">
+        <div class="text-con">
+          Stay Empowered by <br />
+          Your Progress
+        </div>
+        <div>
+          <hr />
+        </div>
+        <div class="text-con-1">
           Scientific studies show that tracking your progress can significantly boost <br />
           your chances of successfully building and maintaining habits. <br />
           Fuel your journey with insightful metrics, celebrate your milestones, and stay <br />
-          motivated on your path to success.
+          motivated on your path to success. <br />
+        </div>
+      </div>
+      <div class="container-4">
+        <div class="container">
+          <img src="i5.svg" class="im5" />
+          <div class="font-1">
+            Why Wait to <br />
+            Transform Your Life?
+          </div>
+          <div class="font-1A">
+            Join over 2 million people who are taking control of their habits and building <br />
+            a better life with Habitify. Whether your aim is to enhance productivity, <br />
+            improve fitness, or simply form healthier daily habits, <br />
+            Habitify has everything you need to make it happen.
+          </div>
+        </div>
+      </div>
+      <div class="container-5">
+        <div class="container">
+          <img src="i7.svg" class="im7" />
+          <div class="font-2">
+            Proven Success Stories
+          </div>
+          <div class="font-2A">
+            Habitify isn't just loved by our users - we've also been recognized by<br />
+            industry leaders. Featured as the App of the Day on the Apple App Store, <br />
+            we're committed to delivering quality, effectiveness, and a platform for<br />
+            genuine transformation.
+          </div>
         </div>
       </div>
 
-    
 
       <footer className="footer">
         <div className="container">

@@ -25,7 +25,7 @@ function Navbar() {
     <nav className="navbar">
       <motion.div
         className="logo"
-        initial={{ y: "-50px" }}
+        initial={{ y: "-0px" }}
         animate={{ y: "0px" }}
         transition={{ delay: 1, ease: "easeInOut" }}
       >
@@ -34,11 +34,9 @@ function Navbar() {
       <ul className="nav-links">
         {isLoggedIn ? (
           <>
+
             <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/habits">Habits</Link>
+              <Link to="/habit">Habits</Link>
             </li>
             <li>
               <Link to="/progress">Progress</Link>
@@ -47,7 +45,10 @@ function Navbar() {
               <Link to="/reports">Reports</Link>
             </li>
             <li>
-              <Link to="/settings">Settings</Link>
+              <Link to="/video">Tutorials</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <button className="logout-btn" onClick={handleLogout}>
